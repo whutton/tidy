@@ -6,7 +6,9 @@
 #   get col names
 ############################
 
-col_name <- read.delim("c:\\hutton\\r_class_2\\features.txt",sep="",
+setwd("c:\\hutton\\r_class_2")
+
+col_name <- read.delim("features.txt",sep="",
 	header=FALSE,
     col.names=c("col_number","measure_name"))
 col_name_vector <- as.vector(col_name[,2])
@@ -19,15 +21,15 @@ col_count <- length(col_name_vector)
 #              y_train will have the type of activity for each event
 ############################
 
-y_train_subject <- read.delim("c:\\hutton\\r_class_2\\train\\subject_train.txt")
-y_train_activity <- read.delim("c:\\hutton\\r_class_2\\train\\y_train.txt")
+y_train_subject <- read.delim("train\\subject_train.txt")
+y_train_activity <- read.delim("train\\y_train.txt")
 
-train_x <- read.delim("c:\\hutton\\r_class_2\\train\\X_train.txt",
+train_x <- read.delim("train\\X_train.txt",
 	col.names=col_name_vector,
 	sep = "")
 
-y_test_subject <- read.delim("c:\\hutton\\r_class_2\\test\\subject_test.txt")
-y_test_activity <- read.delim("c:\\hutton\\r_class_2\\test\\y_test.txt")
+y_test_subject <- read.delim("test\\subject_test.txt")
+y_test_activity <- read.delim("test\\y_test.txt")
 
 
 for (ctr in 1:nrow(train_x)) {
@@ -35,7 +37,7 @@ for (ctr in 1:nrow(train_x)) {
 	train_x$person[ctr] <- y_train_subject[ctr,1]
 }
 
-test_x <- read.delim("c:\\hutton\\r_class_2\\test\\X_test.txt",
+test_x <- read.delim("test\\X_test.txt",
       col.names=col_name_vector,
 	sep = "")
 
